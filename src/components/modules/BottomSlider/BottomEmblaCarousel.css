@@ -1,0 +1,116 @@
+.BottomEmbla {
+  --slide-spacing: 1rem;
+  --slide-size: 100%;
+  --slide-height: 19rem;
+  display: none;
+  overflow: hidden;
+  height: 370px;
+  width: 100%;
+}
+.BottomEmbla__viewport {
+  overflow: hidden;
+  width: 70%;
+  max-width: 611.1px;
+}
+.BottomEmbla__container {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.BottomEmbla__slide {
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  position: relative;
+  height: 370px;
+  width: 100%;
+}
+.BottomEmbla__slide__img {
+  display: block;
+  height: var(--slide-height);
+  object-fit: cover;
+}
+
+.BottomEmbla-thumbs {
+  width: 30%;
+  /* max-width: 239.44px; */
+}
+.BottomEmbla-thumbs__viewport {
+  height: 100%;
+}
+.BottomEmbla-thumbs__container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.BottomEmbla-thumbs__slide {
+  min-width: 0;
+  width: 97%;
+  position: relative;
+  border: solid 1px #ce3f86;
+  font-size: 16px;
+  color: #ce3f86;
+  opacity: 0.2;
+  position: relative;
+}
+.BottomEmbla-thumbs__slide::after {
+  content: "";
+  background: pink;
+  border-right: 5px solid #ce3f86;
+  position: absolute;
+  right: -7px;
+  top: -1px;
+  height: 103%;
+}
+
+.triangle {
+  display: none;
+}
+
+.triangle--selected {
+  position: absolute;
+  font-size: 34px;
+  top: -5px;
+  left: -23px;
+  color: #ce3f86;
+}
+.top-triangle {
+  position: absolute;
+  color: #ce3f86;
+  font-size: 31px;
+  top: -13px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.BottomEmbla-thumbs__slide__button {
+  -webkit-appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  transition: opacity 0.2s;
+}
+.BottomEmbla-thumbs__slide--selected {
+  opacity: 1;
+}
+.BottomEmbla-thumbs__slide__img {
+  display: block;
+  /* height: var(--thumbs-slide-height); */
+  width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 1024px) {
+  .BottomEmbla {
+    display: flex;
+  }
+}
