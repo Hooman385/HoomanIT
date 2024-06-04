@@ -1,0 +1,16 @@
+.scroller::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+.scroller::-webkit-scrollbar-track {
+    background: transparent;
+}
+.scroller:hover::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color-thumb);
+}
+.scroller:hover::-webkit-scrollbar-track {
+    background: var(--scrollbar-color-track);
+}
+
+.scroller:hover {
+    --fix: ; /* This custom property invalidates styles on hover, thereby enforcing a style recomputation. This is needed to work around a bug in Safari. */
+}
