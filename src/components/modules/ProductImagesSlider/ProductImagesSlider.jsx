@@ -6,6 +6,7 @@ import "./css/ProductImagesSlider.css";
 import Image from "next/image";
 
 const ProductImagesSlider = ({ productImages }) => {
+  console.log(productImages)
   const options = {};
 
   // const images = [
