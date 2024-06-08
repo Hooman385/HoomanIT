@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer/Footer";
 import CartProvider from "@/redux/features/providers/CartProvider";
 import PersistGateProvider from "@/redux/features/providers/PersistGateProvider";
 import AuthProvider from "@/components/layout/AuthProvider";
-import { ToastContainer } from "react-toastify";
+
 
 const myFont = localFont({
   src: [

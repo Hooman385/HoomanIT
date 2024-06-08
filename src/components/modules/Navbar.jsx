@@ -4,6 +4,7 @@ import { FaChevronDown } from "react-icons/fa6";
 import { FaSquareFull } from "react-icons/fa6";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { navLinks } from "@/lib/navbarData";
+import Link from "next/link";
 
 function Navbar() {
   return (
@@ -43,23 +44,31 @@ function Navbar() {
                             {link.sublinks.map((sublinksSubArr, index) => (
                               <ul
                                 key={index}
-                                className="grid grid-cols-3 justify-items-start gap-x-3 max-h-[150px] overflow-auto no-scrollbar"
+                                className="border-b border-gray-200 flex flex-col justify-items-start gap-x-3 max-h-[150px] min-w-[150px] overflow-auto no-scrollbar"
                               >
                                 {sublinksSubArr.map((sublink, index) =>
                                   Object.keys(sublink)[0] ===
                                   "levelThreeTitle" ? (
                                     <li
                                       key={index}
-                                      className="col-span-full mb-[5px] text-[13px] text-[#232323]"
+                                      className=" mb-[5px] text-[13px] text-[#232323] cursor-pointer"
                                     >
-                                      <b>{sublink.levelThreeTitle}</b>
+                                      <b>
+                                        <Link href={sublink.path}>
+                                          {sublink.levelThreeTitle}
+                                        </Link>
+                                      </b>
                                     </li>
                                   ) : (
                                     <li
                                       key={index}
-                                      className="text-[#616161] text-[13px]"
+                                      className="text-gray-500 text-[13px]  cursor-pointer hover:text-black"
                                     >
-                                      {sublink.levelThreeSubtitle}
+                                      <Link
+                                        href={`${sublink.path}&search=${sublink.levelThreeSubtitle}`}
+                                      >
+                                        {sublink.levelThreeSubtitle}
+                                      </Link>
                                     </li>
                                   )
                                 )}
