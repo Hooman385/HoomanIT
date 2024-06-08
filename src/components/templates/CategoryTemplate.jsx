@@ -14,8 +14,6 @@ import NoResultsFound from "../modules/NoResultsFound";
 import { useRouter, useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import Loading from "../modules/Loading/Loading";
-import styles from "../modules/Loading/Loading.module.css";
-
 
 // import { use } from "react";
 // import useSWR from "swr";
@@ -130,7 +128,7 @@ function CategoryTemplate(
             {products &&
               pageNumber <= maxPage &&
               products?.map((product, index) => {
-                return <CategoryCard product={product} />;
+                return <CategoryCard key={index} product={product} />;
               })}
             {(pageNumber > maxPage || noResults) && <NoResultsFound />}
           </div>
