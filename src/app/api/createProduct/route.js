@@ -18,7 +18,6 @@ export async function POST(req) {
     }
 
 
-    console.log(index)
     const newProduct = {
         title,
         desc,

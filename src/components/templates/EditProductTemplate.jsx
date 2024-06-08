@@ -129,7 +129,6 @@ function EditProductTemplate({ product }) {
       });
 
       const result = await response.json();
-      console.log(result.updatedProduct);
       toast.success(result.message, {
         autoClose: 2000,
         onClose: () => {
