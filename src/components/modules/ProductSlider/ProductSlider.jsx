@@ -10,6 +10,7 @@ const ProductSlider = (props) => {
   const { slides, title } = props;
 
   const autoplayOptions = {
+    
     stopOnInteraction: false,
     playOnInit: true,
     delay: 6000,
