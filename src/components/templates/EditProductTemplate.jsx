@@ -8,8 +8,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaUpload } from "react-icons/fa6";
 import { RiAttachment2 } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from "react-hot-toast";
 
 function EditProductTemplate({ product }) {
   // form states
@@ -17,9 +16,10 @@ function EditProductTemplate({ product }) {
   const [price, setPrice] = useState(product?.price);
   const [category, setCategory] = useState(product?.category);
   const [quantity, setQuantity] = useState(product?.quantity);
-  const [selectedWarrantyRadio, setSelectedWarrantyRadio] = useState(
+  const [selectedWarrantyCheckbox, setSelectedWarrantyCheckbox] = useState(
     product?.warranty
   );
+
 
   const [warrantyName, setWarrantyName] = useState(product?.warrantyName);
   const [desc, setDesc] = useState(product?.desc);
@@ -91,19 +91,20 @@ function EditProductTemplate({ product }) {
     }
   };
 
-  const updateProduct = async () => {
+  const updateProduct = async (e) => {
+   
     if (
       !title ||
       !category ||
       !desc ||
-      !selectedWarrantyRadio ||
+      !selectedWarrantyCheckbox ||
       !quantity ||
       !price ||
-      !specs
+      !specs ||
+      !desc
       // !productImages
     ) {
-      toast.error("لطفا همه فیلدهای الزامی را پر کنید");
-      // alert("لطفا همه فیلدهای الزامی را پر کنید");
+      alert("لطفا همه فیلدهای الزامی را پر کنید");
       return;
     }
     const data = {
@@ -111,7 +112,7 @@ function EditProductTemplate({ product }) {
       price,
       category,
       quantity,
-      warranty: selectedWarrantyRadio,
+      warranty: selectedWarrantyCheckbox,
       warrantyName,
       desc,
       colors,
@@ -120,25 +121,15 @@ function EditProductTemplate({ product }) {
       id: product?._id,
     };
 
-    try {
-      const response = await fetch("http://localhost:3000/api/updateProduct", {
-        method: "PATCH",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" },
-        // headers: {"Content-Type": "multipart/form-data"}
-      });
+    const response = await fetch("http://localhost:3000/api/updateProduct", {
+      method: "PATCH",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    });
 
-      const result = await response.json();
-      toast.success(result.message, {
-        autoClose: 2000,
-        onClose: () => {
-          window.location.reload();
-        },
-      });
-    } catch (error) {
-      console.log(error.error);
-      toast.error(result.error);
-    }
+    const result = await response.json();
+    
+    alert(result.message);
   };
 
   return (
@@ -157,7 +148,6 @@ function EditProductTemplate({ product }) {
             className="text-sm rounded-[5px] px-1 outline-none h-[30px]"
           />
         </div>
-
         {
           <div className="flex flex-col gap-1 w-full">
             <label htmlFor="title">
@@ -242,27 +232,33 @@ function EditProductTemplate({ product }) {
             <div className="flex gap-1 items-center">
               <label htmlFor="none">ندارد </label>
               <input
-                type="radio"
+                type="checkbox"
                 id="none"
                 name="warranty"
                 value="none"
-                checked={selectedWarrantyRadio === "none"}
-                onChange={(e) => setSelectedWarrantyRadio(e.target.value)}
+                checked={selectedWarrantyCheckbox === "none"}
+                onChange={(e) => {
+                  setSelectedWarrantyCheckbox(e.target.value);
+                  // console.log(e.target.value);
+                }}
               />
             </div>
             <div className="flex gap-1 items-center">
               <label htmlFor="available">دارد</label>
               <input
-                type="radio"
-                id="avaiable"
+                type="checkbox"
+                id="available"
                 name="warranty"
                 value="available"
-                checked={selectedWarrantyRadio === "available"}
-                onChange={(e) => setSelectedWarrantyRadio(e.target.value)}
+                checked={selectedWarrantyCheckbox === "available"}
+                onChange={(e) => {
+                  setSelectedWarrantyCheckbox(e.target.value);
+                  // console.log(e.target.value);
+                }}
               />
             </div>
           </div>
-          {selectedWarrantyRadio === "available" && (
+          {selectedWarrantyCheckbox === "available" && (
             <div className="flex flex-col gap-1">
               <label htmlFor="warranty-names">نام گارانتی</label>
               <input
@@ -405,7 +401,7 @@ function EditProductTemplate({ product }) {
           بروزرسانی محصول
         </button>
       </div>
-      <ToastContainer />
+     
     </div>
   );
 }
