@@ -18,7 +18,7 @@ export async function PATCH(req) {
     productImages,
     category,
   } = await req.json();
-
+  console.log(desc)
   if (
     !title ||
     !desc ||
@@ -46,7 +46,7 @@ export async function PATCH(req) {
     category,
     colors,
     warranty,
-    warrantyName,
+    warrantyName: warranty === "available" ? warrantyName : "",
     quantity,
     price,
     specs,
@@ -63,7 +63,7 @@ export async function PATCH(req) {
   revalidatePath("/categories");
 
   return NextResponse.json({
-    message: "updates received",
+    message: "تغییرات ایجاد شدند",
     updatedProduct: product,
   });
 }
