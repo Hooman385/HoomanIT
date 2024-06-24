@@ -42,7 +42,7 @@ function ProductTop({ details }) {
         <div className="vertical-divider"></div>
         <div>
           <div>
-            <h3>گارانتی: {warrantyName ? warrantyName : warranty} </h3>
+            <h3>گارانتی: {warranty === "available" ? warrantyName : "ندارد"} </h3>
           </div>
           <div className="py-3 flex items-center gap-3">
             {colors[0] && (
