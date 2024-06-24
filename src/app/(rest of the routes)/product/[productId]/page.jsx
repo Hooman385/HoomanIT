@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 
 async function page({ params: { productId } }) {
   const response = await fetch(
-    `http://localhost:3000/api/getProduct/${productId}`
+    `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/getProduct/${productId}`
   );
   const result = await response.json();
 

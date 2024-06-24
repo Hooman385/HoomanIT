@@ -69,10 +69,13 @@ function NewProductTemplate({ currentIndex }) {
       data.append(`image${index}`, image);
     });
 
-    const res = await fetch("http://localhost:3000/api/imageUpload", {
-      method: "POST",
-      body: data,
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/imageUpload`,
+      {
+        method: "POST",
+        body: data,
+      }
+    );
 
     const result = await res.json();
 
@@ -117,12 +120,15 @@ function NewProductTemplate({ currentIndex }) {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/api/createProduct", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" },
-        // headers: {"Content-Type": "multipart/form-data"}
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/createProduct`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+          // headers: {"Content-Type": "multipart/form-data"}
+        }
+      );
 
       const result = await response.json();
       toast.success(result.message, {

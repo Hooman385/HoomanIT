@@ -9,7 +9,7 @@ async function CategoryPage({ searchParams }) {
   // const categoryFilters = searchParams.category ?? [];
 
   // const response = await fetch(
-  //   `http://localhost:3000/api/categorySearchWithParams/?${mySearchParams.toString()}&page=${pageNumber}`
+  //   `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/categorySearchWithParams/?${mySearchParams.toString()}&page=${pageNumber}`
   // );
 
   // const result = await response.json();

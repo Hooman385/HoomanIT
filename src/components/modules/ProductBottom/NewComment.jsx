@@ -23,17 +23,20 @@ function NewComment({ productId }) {
       alert("لطفا فیلدهای خواسته شده را پر نمایید");
       return;
     }
-    const response = await fetch("http://localhost:3000/api/submitComment", {
-      method: "POST",
-      body: JSON.stringify({
-        body: userComment,
-        title: commentTitle,
-        productId,
-        authorId: session.data.user.id,
-        authorName: session.data.user.name,
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/submitComment`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          body: userComment,
+          title: commentTitle,
+          productId,
+          authorId: session.data.user.id,
+          authorName: session.data.user.name,
+        }),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     const result = await response.json();
     if (response.status === 201) {
       // alert(result.message);

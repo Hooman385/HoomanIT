@@ -41,7 +41,7 @@ function RightPanel() {
         </li> */}
 
         <li
-          onClick={() => signOut({ callbackUrl: "http://localhost:3000" })}
+          onClick={() => signOut({ callbackUrl: `http://localhost:3000` })}
           className="p-2 rounded-[5px] hover:text-white hover:bg-red-600 cursor-pointer flex justify-between items-center"
         >
           خروج از حساب

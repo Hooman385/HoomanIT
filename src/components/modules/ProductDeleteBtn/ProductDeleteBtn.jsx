@@ -8,7 +8,7 @@ function ProductDeleteBtn({ id, title }) {
   const router = useRouter();
   const deleteHandler = async () => {
     const res = await fetch(
-      `http://localhost:3000/api/deleteProduct/?id=${id}`,
+      `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/deleteProduct/?id=${id}`,
       { method: "DELETE" }
     );
     const result = await res.json();

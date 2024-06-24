@@ -20,7 +20,6 @@ function EditProductTemplate({ product }) {
     product?.warranty
   );
 
-
   const [warrantyName, setWarrantyName] = useState(product?.warrantyName);
   const [desc, setDesc] = useState(product?.desc);
   const [apiImages, setApiImages] = useState([]);
@@ -74,10 +73,13 @@ function EditProductTemplate({ product }) {
       data.append(`image${index}`, image);
     });
 
-    const res = await fetch("http://localhost:3000/api/imageUpload", {
-      method: "POST",
-      body: data,
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/imageUpload`,
+      {
+        method: "POST",
+        body: data,
+      }
+    );
 
     const result = await res.json();
 
@@ -92,7 +94,6 @@ function EditProductTemplate({ product }) {
   };
 
   const updateProduct = async (e) => {
-   
     if (
       !title ||
       !category ||
@@ -121,14 +122,17 @@ function EditProductTemplate({ product }) {
       id: product?._id,
     };
 
-    const response = await fetch("http://localhost:3000/api/updateProduct", {
-      method: "PATCH",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/updateProduct`,
+      {
+        method: "PATCH",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
 
     const result = await response.json();
-    
+
     alert(result.message);
   };
 
@@ -401,7 +405,6 @@ function EditProductTemplate({ product }) {
           بروزرسانی محصول
         </button>
       </div>
-     
     </div>
   );
 }

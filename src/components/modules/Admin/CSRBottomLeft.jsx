@@ -10,7 +10,6 @@
 //   const [pageNumber, setPageNumber] = useState(1);
 //   const [pagesToShow, setPagesToShow] = useState([]);
 
-
 //   const getPageNumbersRange = () => {
 //     const currentPage = pageNumber;
 //     let start = currentPage - 2;
@@ -34,8 +33,6 @@
 //     setPagesToShow(pageNumbers);
 //   };
 
- 
-
 //   const data = {
 //     page: pageNumber,
 //     limit: 3,
@@ -44,7 +41,7 @@
 //   useEffect(() => {
 //     const getData = async () => {
 //       const response = await fetch(
-//         "http://localhost:3000/api/adminPanelPagination",
+//         "${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/adminPanelPagination",
 //         {
 //           method: "POST",
 //           body: JSON.stringify(data),
