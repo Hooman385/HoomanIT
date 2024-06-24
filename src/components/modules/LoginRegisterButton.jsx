@@ -14,7 +14,7 @@ function LoginRegisterButton() {
           <TbUser size={28} />
           <Link href="/signin">ورود</Link>
           <p>.</p>
-          <Link href="/">ثبت نام</Link>
+          <Link href="/register">ثبت نام</Link>
         </>
       ) : (
         <ProfileHoverCard role={session?.data?.user?.role}>
