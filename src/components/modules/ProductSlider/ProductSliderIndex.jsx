@@ -3,7 +3,7 @@ import ProductSlider from "./ProductSlider";
 import "./ProductSlider.css";
 
 const OPTIONS = { slidesToScroll: "auto", containScroll: "trimSnaps" };
-const SLIDE_COUNT = 5;
+const SLIDE_COUNT = 8;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
 const ProductSliderIndex = ({ title }) => (
