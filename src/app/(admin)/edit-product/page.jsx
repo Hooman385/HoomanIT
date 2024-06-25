@@ -1,7 +1,6 @@
 import EditProductTemplate from "@/components/templates/EditProductTemplate";
 import connectDB from "@/lib/connectDB";
 import Product from "@/models/Product";
-import { Toaster } from "react-hot-toast";
 
 async function EditProductPage({ searchParams }) {
   await connectDB();
@@ -10,7 +9,7 @@ async function EditProductPage({ searchParams }) {
   return (
     <>
       <EditProductTemplate product={JSON.parse(JSON.stringify(product))} />
-      <Toaster />
+      
     </>
   );
 }

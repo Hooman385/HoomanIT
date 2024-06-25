@@ -16,6 +16,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@reduxjs/toolkit": "^2.2.1",
     "@splidejs/react-splide": "^0.7.12",
+    "@vercel/blob": "^0.23.3",
     "bcryptjs": "^2.4.3",
     "cjs-loader": "^0.1.0",
     "class-variance-authority": "^0.7.0",

@@ -24,12 +24,16 @@ function NewProductTemplate({ currentIndex }) {
   const [desc, setDesc] = useState("");
   const [apiImages, setApiImages] = useState([]);
   const [productImages, setProductImages] = useState(null);
+  const [imageGroupName, setImageGroupName] = useState("");
   const [selectedImages, setSelectedImages] = useState([]);
   const [colors, setColors] = useState([]);
   const [specs, setSpecs] = useState([]);
   const [imageUploadMessage, setImageUploadMessage] = useState("");
   const [imageUploadError, setImageUploadError] = useState("");
 
+  useEffect(() => {
+    console.log(productImages);
+  }, [productImages]);
   const addSpec = (e) => {
     e.preventDefault();
     const newSpecs = [...specs];
@@ -70,7 +74,7 @@ function NewProductTemplate({ currentIndex }) {
     });
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/imageUpload`,
+      `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/imageUpload?imageGroupName=${imageGroupName}`,
       {
         method: "POST",
         body: data,
@@ -293,7 +297,19 @@ function NewProductTemplate({ currentIndex }) {
               />
             ))}
           </div>
-          <div className="flex gap-5 items-center mt-5">
+          <div className="flex items-end gap-5  mt-5">
+            <label htmlFor="imageGroupName" className="flex flex-col gap-2">
+              <p>
+                نام تصاویر گروه <span className="text-red-500 text-xs">*</span>
+              </p>
+              <input
+                id="imageGroupName"
+                type="text"
+                className="text-sm rounded-[5px] px-1 outline-none  h-[30px]"
+                value={imageGroupName}
+                onChange={(e) => setImageGroupName(e.target.value)}
+              />
+            </label>
             <label htmlFor="imageInput" className="cursor-pointer w-fit h-fit">
               <div className="flex w-fit items-center gap-3 p-2 px-3 rounded-[8px] text-white bg-pink-500 hover:bg-pink-600 transition-colors duration-300">
                 انتخاب تصاویر

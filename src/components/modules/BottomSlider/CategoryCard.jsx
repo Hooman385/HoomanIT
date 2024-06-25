@@ -24,7 +24,7 @@ function CategoryCard({ product }) {
       <div className="img-container m-auto relative w-[90%] h-[60%]">
         <Image
           className="object-contain"
-          src={product?.productImages?.[0].path}
+          src={product?.productImages?.[0].url}
           fill
           alt="product category image"
         />

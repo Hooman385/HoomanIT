@@ -8,7 +8,6 @@ import { FaPlus } from "react-icons/fa6";
 import { FaUpload } from "react-icons/fa6";
 import { RiAttachment2 } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
-import toast, { Toaster } from "react-hot-toast";
 
 function EditProductTemplate({ product }) {
   // form states
@@ -20,13 +19,13 @@ function EditProductTemplate({ product }) {
     product?.warranty
   );
 
-  const [warrantyName, setWarrantyName] = useState(product?.warrantyName);
+  const [warrantyName, setWarrantyName] = useState(product?.warrantyName || "");
   const [desc, setDesc] = useState(product?.desc);
   const [apiImages, setApiImages] = useState([]);
   const [productImages, setProductImages] = useState(null);
   const [selectedImages, setSelectedImages] = useState(() => {
     let initialImages = [];
-    product?.productImages.forEach((image) => initialImages.push(image.path));
+    product?.productImages.forEach((image) => initialImages.push(image.url));
     return initialImages;
   });
   const [colors, setColors] = useState(product?.colors);
@@ -243,7 +242,6 @@ function EditProductTemplate({ product }) {
                 checked={selectedWarrantyCheckbox === "none"}
                 onChange={(e) => {
                   setSelectedWarrantyCheckbox(e.target.value);
-                  // console.log(e.target.value);
                 }}
               />
             </div>

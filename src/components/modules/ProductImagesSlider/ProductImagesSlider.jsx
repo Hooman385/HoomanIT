@@ -56,7 +56,7 @@ const ProductImagesSlider = ({ productImages }) => {
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 fill
-                src={image.path}
+                src={image.url}
                 alt="current product image"
               />
             </div>
@@ -77,7 +77,7 @@ const ProductImagesSlider = ({ productImages }) => {
                   className="object-cover"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  src={image.path}
+                  src={image.url}
                   alt="product images thumbnail"
                 />
               </div>
