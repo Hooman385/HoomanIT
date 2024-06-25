@@ -3,11 +3,14 @@ import connectDB from "./connectDB";
 
 export const getProducts = async (pageNumber, query) => {
   await connectDB();
-  const numberOfProducts = 5;
+  const numberOfProducts = 5; //to show in each page
   const startIndex = (pageNumber - 1) * numberOfProducts;
   const productsCount = await Product.find();
   let noResults = false;
-  let maxPage = Math.ceil(productsCount.length / numberOfProducts);
+  let maxPage =
+    Math.ceil(productsCount.length / numberOfProducts) > 0
+      ? Math.ceil(productsCount.length / numberOfProducts)
+      : 1;
   let products = [];
 
   if (query) {
@@ -29,7 +32,6 @@ export const getProducts = async (pageNumber, query) => {
   } else {
     products = await Product.find().limit(numberOfProducts).skip(startIndex);
   }
-
   return [products, maxPage, noResults];
 };
 
