@@ -2,7 +2,7 @@ import PersistGateProvider from "@/redux/features/providers/PersistGateProvider"
 import AddToCartModule from "./AddToCartModule";
 import CartProvider from "@/redux/features/providers/CartProvider";
 
-function AddToCart({ title, image, price, quantity, warranty, color, id }) {
+function AddToCart({ title, image, price, quantity, warranty, color, id , warrantyName}) {
   return (
     
         <AddToCartModule
@@ -12,6 +12,7 @@ function AddToCart({ title, image, price, quantity, warranty, color, id }) {
           price={price}
           color={color}
           warranty={warranty}
+          warrantyName={warrantyName}
           id={id}
         />
     

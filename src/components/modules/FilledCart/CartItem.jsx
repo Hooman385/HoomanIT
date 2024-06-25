@@ -4,9 +4,9 @@ import ProductCounter from "../ProductCounter/ProductCounter";
 import { removeFromCart } from "@/redux/features/slices/cartSlice";
 import { useDispatch } from "react-redux";
 
-function CartItem({ title, id, color, quantity, price, image, warranty }) {
+function CartItem({ title, id, color, quantity, price, image, warranty, warrantyName }) {
   const dispatch = useDispatch();
-
+  console.log(image)
   return (
     <div className="flex  last:border-0 border-b border-b-gray-200 py-2">
       <div className="right w-[250px] flex items-center justify-around gap-1 rounded-[8px] overflow-hidden">
@@ -31,7 +31,7 @@ function CartItem({ title, id, color, quantity, price, image, warranty }) {
         <h3 className="text-sm md:text-base">{title}</h3>
         <div className="flex flex-col gap-1">
           <p className="text-sm">{color}</p>
-          <p className="text-sm">{warranty}</p>
+          <p className="text-sm">{warranty === "none" ? "ندارد" : warrantyName}</p>
           <ProductCounter quantity={quantity} id={id} />
           <p className="text-sm">
             {price.toLocaleString("fa-IR")} <span>تومان</span>

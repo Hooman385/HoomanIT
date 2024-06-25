@@ -10,6 +10,7 @@ function AddToCartModule({
   price,
   quantity,
   warranty,
+  warrantyName,
   color,
   id,
 }) {
@@ -20,7 +21,7 @@ function AddToCartModule({
     <button
       onClick={() =>
         dispatch(
-          addToCart({ title, color, price, quantity, image, warranty, id })
+          addToCart({ title, color, price, quantity, image, warranty, id, warrantyName })
         )
       }
       className="flex gap-3 items-center text-white bg-[#FC67A3] p-3 rounded-[5px] "

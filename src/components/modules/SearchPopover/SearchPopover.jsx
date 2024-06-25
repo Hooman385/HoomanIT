@@ -13,7 +13,7 @@ function SearchPopover({ data, debouncedText }) {
               <div className=" w-full h-[100px] p-5  flex items-center justify-between gap-3 px-3 cursor-pointer hover:bg-gray-200 ">
                 <p>{product?.title}</p>
                 <Image
-                  src={product?.productImages[0]?.path}
+                  src={product?.productImages[0]?.url}
                   width={50}
                   height={50}
                   alt="search popover result image"

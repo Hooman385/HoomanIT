@@ -5,8 +5,12 @@ import { navLinks } from "@/lib/navbarData";
 import { FaChevronDown } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import "./MobileNavbar.css";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 function MobileNavbar({ open, setOpen }) {
+  const session = useSession();
+  console.log(session);
   return (
     <Accordion.Root
       className={` block lg:hidden bg-gray-200 pt-[60px] w-[200px] h-[100svh] z-[99] p-2 fixed top-0 right-0 transition-all duration-300	 ${
@@ -74,13 +78,50 @@ function MobileNavbar({ open, setOpen }) {
           </Accordion.Content>
         </Accordion.Item>
       ))}
-      <ul className="absolute bottom-0 right-0 flex  gap-1 w-[100%] text-center bg-gray-200 p-2">
+      <ul className="absolute bottom-0 right-0 flex flex-col gap-1 w-[100%] text-center bg-gray-200 p-2">
         <li className="py-1 text-white rounded-[5px] w-full text-[10px] bg-blue-400">
           سبد خرید
         </li>
-        <li className="py-1 text-white rounded-[5px] w-full text-[10px] bg-green-500">
-          ورود
-        </li>
+        {session.status === "authenticated" ? (
+          session?.data?.user?.role === "ADMIN" ? (
+            <Link
+              href="/admin"
+              className="py-1 text-white rounded-[5px] w-full text-[10px] bg-green-500"
+            >
+              پنل ادمین
+            </Link>
+          ) : (
+            <Link
+              href="/"
+              className="py-1 text-white rounded-[5px] w-full text-[10px] bg-green-500"
+            >
+              پروفایل
+            </Link>
+          )
+        ) : (
+          <Link
+            href="/signin"
+            className="py-1 text-white rounded-[5px] w-full text-[10px] bg-green-500"
+          >
+            ورود
+          </Link>
+        )}
+        {session.status === "authenticated" ? (
+          <li
+            onClick={signOut}
+            className="py-1 text-white rounded-[5px] w-full text-[10px] bg-red-500"
+          >
+            خروج
+          </li>
+        ) : null}
+        {session.status === "unauthenticated" ? (
+          <li
+            onClick={signOut}
+            className="py-1 text-white rounded-[5px] w-full text-[10px] bg-orange-500"
+          >
+            ثبت نام
+          </li>
+        ) : null}
       </ul>
     </Accordion.Root>
   );

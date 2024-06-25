@@ -7,8 +7,9 @@ import Image from "next/image";
 
 async function AllProductsRows({ pageNumber, search }) {
   const [products, maxPage, noResults] = await getProducts(pageNumber, search);
-
-  if (pageNumber > maxPage) redirect(`/admin?search=${search}`);
+  if (pageNumber > maxPage) {
+    redirect('/admin?page=1');
+  }
 
   const pagesNumberRange = updatePageNumbers(pageNumber, maxPage);
 

@@ -85,6 +85,7 @@ function ProductTop({ details }) {
               price={price}
               color={color}
               warranty={warranty}
+              warrantyName={warrantyName}
               id={_id}
             />
             <button className="flex gap-3 items-center text-white bg-[#FC67A3] p-3 rounded-[5px] ">

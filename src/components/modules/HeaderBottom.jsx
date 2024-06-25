@@ -8,21 +8,24 @@ import Link from "next/link";
 
 function HeaderBottom() {
   return (
-    <div className="w-full header-bottom">
+    <div className="w-full header-bottom px-5">
       <div className="top flex mx-auto justify-between items-center flex-wrap max-w-[1170px] py-6 ">
-        <Link href="/cart">
-          <CartButton />
-        </Link>
-        {/* this logo is only shown in screen sizes below lg (1024px) */}
-        <div className="flex lg:hidden items-center gap-2 mx-auto">
-          <h1>
-            <b>HOUMAN</b> IT
-          </h1>
-          <Image src="/logo.png" width={50} height={50} alt="logo" />
-        </div>
-
+        
+          <Link href="/cart">
+            <CartButton />
+          </Link>
+          {/* this logo is only shown in screen sizes below lg (1024px) */}
+          <Link
+            href="/"
+            className="flex lg:hidden items-center gap-2 mx-auto xs:mx-0"
+          >
+            <h1>
+              <b>HOUMAN</b> IT
+            </h1>
+            <Image src="/logo.png" width={50} height={50} alt="logo" />
+          </Link>
+        
         <LoginRegisterButton />
-
         <Search />
         <Logo />
       </div>

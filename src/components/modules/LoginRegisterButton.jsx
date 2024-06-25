@@ -8,7 +8,8 @@ function LoginRegisterButton() {
   const session = useSession();
 
   return (
-    <div className="hidden xs:flex gap-1 items-center text-gray-600 cursor-pointer">
+    <div className="hidden lg:flex gap-1 items-center text-gray-600 cursor-pointer">
+      
       {!session.data ? (
         <>
           <TbUser size={28} />

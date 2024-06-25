@@ -1,26 +1,19 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useDebounce } from "use-debounce";
 
 function AdminSearch() {
   const searchParams = useSearchParams();
-  const search = searchParams.get("search");
+  const search = searchParams.get("search") || "";
   const pageNumber = searchParams.get("page");
 
   const router = useRouter();
-  // const [searchText, setSearchText] = useState(search);
-  const [searchText, setSearchText] = useState(() => {
-    if (search) {
-      return search;
-    } else {
-      return "";
-    }
-  });
+  const [searchText, setSearchText] = useState(search) || "";
 
-  const [debouncedSearchText] = useDebounce(searchText, 500);
+  const [debouncedSearchText] = useDebounce(search, 500);
 
   //using ref works as a way to prevent params being removed from url
   //however when react strict mode is on, it renders more than once
@@ -48,7 +41,7 @@ function AdminSearch() {
       <input
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
-        className="bg-[#f0f0f1] w-full outline-none pr-3 text-[14px]"
+        className="bg-[#f0f0f1] w-full outline-none pr-3 text-[14px] "
         type="text"
         placeholder="محصول مورد نظر را جستجو کنید..."
       />

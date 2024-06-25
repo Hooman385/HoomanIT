@@ -70,7 +70,7 @@ function CategoryTemplate(
   return (
     <div className="myContainer">
       {/* banners and sliders and stuff like that go here */}
-      <div className="max-w-[1170px] w-full mx-auto  flex items-center gap-2 text-sm">
+      <div className="max-w-[1170px] w-full mx-auto  flex items-center gap-2 text-sm px-5">
         <IoHomeOutline size={18} />
         دسته‌بندی‌ها
         <FaChevronLeft size={8} />

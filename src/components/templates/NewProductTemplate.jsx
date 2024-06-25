@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import categories from "../../../data/categories";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 function NewProductTemplate({ currentIndex }) {
   // form states
@@ -30,6 +31,7 @@ function NewProductTemplate({ currentIndex }) {
   const [specs, setSpecs] = useState([]);
   const [imageUploadMessage, setImageUploadMessage] = useState("");
   const [imageUploadError, setImageUploadError] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     console.log(productImages);
@@ -105,8 +107,7 @@ function NewProductTemplate({ currentIndex }) {
       !productImages ||
       !index
     ) {
-      toast.error("لطفا همه فیلدهای الزامی را پر کنید");
-      // alert("لطفا همه فیلدهای الزامی را پر کنید");
+      alert("لطفا همه فیلدهای الزامی را پر کنید");
       return;
     }
     const data = {
@@ -123,28 +124,19 @@ function NewProductTemplate({ currentIndex }) {
       index,
     };
 
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/createProduct`,
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: { "Content-Type": "application/json" },
-          // headers: {"Content-Type": "multipart/form-data"}
-        }
-      );
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/createProduct`,
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+        // headers: {"Content-Type": "multipart/form-data"}
+      }
+    );
 
-      const result = await response.json();
-      toast.success(result.message, {
-        autoClose: 2000,
-        onClose: () => {
-          window.location.reload();
-        },
-      });
-    } catch (error) {
-      console.log(error.error);
-      toast.error(result.error);
-    }
+    const result = await response.json();
+    alert(result.message);
+    location.reload()
   };
 
   return (

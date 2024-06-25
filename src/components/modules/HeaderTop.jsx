@@ -10,8 +10,8 @@ function HeaderTop({ open, setOpen }) {
 
   return (
     <div className="w-full header-top">
-      <div className="flex mx-auto justify-between flex-wrap  max-w-[1170px] ">
-        <div className="flex items-center justify-between gap-2 py-2 text-gray-600">
+      <div className="flex mx-auto justify-between flex-wrap  max-w-[1170px] px-5">
+        <div className="flex items-center justify-between gap-2 py-2  text-gray-600">
           <GiHamburgerMenu
             onClick={() => setOpen(!open)}
             className="text-[21px] block lg:hidden"
