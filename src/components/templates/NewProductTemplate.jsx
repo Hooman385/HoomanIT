@@ -292,7 +292,7 @@ function NewProductTemplate({ currentIndex }) {
           <div className="flex items-end gap-5  mt-5">
             <label htmlFor="imageGroupName" className="flex flex-col gap-2">
               <p>
-                نام تصاویر گروه <span className="text-red-500 text-xs">*</span>
+                نام گروه تصاویر<span className="text-red-500 text-xs">*</span>
               </p>
               <input
                 id="imageGroupName"
