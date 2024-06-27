@@ -23,7 +23,7 @@ export const ProfileHoverCard = ({ children, role }) => {
             href="/admin"
             className="bg-gray-200 flex items-center justify-around   hover:border-0 w-[170px] h-[50px] rounded-[5px] hover:text-white hover:bg-gray-500 cursor-pointer"
           >
-            <p className="w-[70%]">پانل ادمین</p>
+            <p className="w-[70%]">پنل ادمین</p>
             <RiAdminFill className="text-xl " />
           </Link>
         )}
