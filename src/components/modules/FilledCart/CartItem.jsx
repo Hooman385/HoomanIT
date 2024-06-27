@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 function CartItem({ title, id, color, quantity, price, image, warranty, warrantyName }) {
   const dispatch = useDispatch();
-  console.log(image)
+
   return (
     <div className="flex  last:border-0 border-b border-b-gray-200 py-2">
       <div className="right w-[250px] flex items-center justify-around gap-1 rounded-[8px] overflow-hidden">

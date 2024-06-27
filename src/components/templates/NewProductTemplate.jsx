@@ -33,9 +33,7 @@ function NewProductTemplate({ currentIndex }) {
   const [imageUploadError, setImageUploadError] = useState("");
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(productImages);
-  }, [productImages]);
+
   const addSpec = (e) => {
     e.preventDefault();
     const newSpecs = [...specs];

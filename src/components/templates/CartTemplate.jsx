@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import EmptyCart from "../modules/EmptyCart";
 import FilledCart from "../modules/FilledCart/FilledCart";
@@ -7,8 +8,6 @@ import { useSelector } from "react-redux";
 
 function CartTemplate() {
   const products = useSelector((store) => store.cart.products);
-
-
 
   return (
     <div className="myContainer">

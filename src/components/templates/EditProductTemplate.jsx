@@ -255,7 +255,7 @@ function EditProductTemplate({ product }) {
                 checked={selectedWarrantyCheckbox === "available"}
                 onChange={(e) => {
                   setSelectedWarrantyCheckbox(e.target.value);
-                  // console.log(e.target.value);
+  
                 }}
               />
             </div>
