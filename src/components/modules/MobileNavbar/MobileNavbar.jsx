@@ -10,7 +10,6 @@ import Link from "next/link";
 
 function MobileNavbar({ open, setOpen }) {
   const session = useSession();
-  console.log(session);
   return (
     <Accordion.Root
       className={` block lg:hidden bg-gray-200 pt-[60px] w-[200px] h-[100svh] z-[99] p-2 fixed top-0 right-0 transition-all duration-300	 ${
