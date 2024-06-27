@@ -10,7 +10,7 @@ export const metadata = {
 async function page() {
   const session = await getServerSession(authOptions);
 
-  if (session.user.email) {
+  if (session?.user?.email) {
     redirect("/");
   }
   return <SignInTemplate />;
