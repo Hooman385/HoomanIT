@@ -18,7 +18,7 @@ export async function PATCH(req) {
     productImages,
     category,
   } = await req.json();
-  console.log(desc)
+ 
   if (
     !title ||
     !desc ||

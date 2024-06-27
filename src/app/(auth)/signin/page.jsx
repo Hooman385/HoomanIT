@@ -9,7 +9,7 @@ export const metadata = {
 
 async function page() {
   const session = await getServerSession(authOptions);
-  console.log(session);
+
   if (session.user.email) {
     redirect("/");
   }
