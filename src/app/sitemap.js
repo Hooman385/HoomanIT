@@ -1,13 +1,14 @@
-import Product from "@/models/Product";
-
 export default async function sitemap() {
-  const products = await Product.find({});
-  const productEntries = products.map((product) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_HOST_URL}/product/${product.id}`,
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_HOST_URL}api/getAllProductIDs`
+  );
+  const productIDs = await response.json();
+  const productEntries = productIDs.map((id) => ({
+    url: `${process.env.NEXT_PUBLIC_BASE_HOST_URL}product/${id}`,
   }));
   return [
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_HOST_URL}/categories`,
+      url: `${process.env.NEXT_PUBLIC_BASE_HOST_URL}categories`,
     },
     ...productEntries,
   ];
