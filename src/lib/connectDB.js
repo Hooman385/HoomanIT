@@ -1,7 +1,7 @@
-"use server";
 import mongoose from "mongoose";
 const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_OPTIONS } = process.env;
 const uri = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}/?${DB_OPTIONS}`;
+
 async function connectDB() {
   if (mongoose.connections[0].readyState) {
     console.log("Already connected to DB");
@@ -20,7 +20,6 @@ async function connectDB() {
     } catch (error) {
       console.log(error.message);
     }
-
   }
 }
 
