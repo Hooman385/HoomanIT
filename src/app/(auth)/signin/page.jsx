@@ -1,7 +1,18 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import SignInTemplate from "@/components/templates/SignInTemplate";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
+export const metadata = {
+  title: "ورود به حساب",
+};
 
-function page() {
+async function page() {
+  const session = await getServerSession(authOptions);
+  console.log(session);
+  if (session.user.email) {
+    redirect("/");
+  }
   return <SignInTemplate />;
 }
 

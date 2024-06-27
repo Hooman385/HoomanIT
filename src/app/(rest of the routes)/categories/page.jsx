@@ -1,6 +1,9 @@
 import CategoryTemplate from "@/components/templates/CategoryTemplate";
 import { updatePageNumbers } from "@/lib/CategoriesPaginationFunctions";
 
+export const metadata = {
+  title: "All Products",
+};
 async function CategoryPage({ searchParams }) {
   // const mySearchParams = new URLSearchParams(searchParams);
   // const pageNumber =
