@@ -8,11 +8,11 @@ export const metadata = {
 async function NewProductPage() {
   await connectDB();
 
-  const products = await Product.find();
 
-  const numberOfAllProducts = products.length;
+  const lastProduct = await Product.findOne().sort({ createdAt: -1 });
 
-  return <NewProductTemplate currentIndex={numberOfAllProducts + 1} />;
+
+  return <NewProductTemplate currentIndex={lastProduct.index + 1} />;
 }
 
 export default NewProductPage;
